@@ -1,4 +1,7 @@
+#!/bin/bash
+
 DATE_FORMAT=`date +"%m/%d/%Y %H:%M"`
+OP_SYS=`uname -s`
 
 echo Welcome to the setup script $USERNAME!
 echo It is currently ${DATE_FORMAT}
@@ -10,16 +13,15 @@ echo brew
 echo git
 echo NodeJS
 echo Installation started!
-if uname -s == "Linux"
-echo yeeeeedaaawg it linux
-endif
+if [ $OP_SYS = Linux ]
+then
+	echo yeeeeedaaawg it linux
+fi
 
-if (uname -s == "Darwin")
-	{
-		echo yeet mac
-	}
-
-
+if [ $OP_SYS = Darwin ]
+then
+	echo yeet mac
+fi
 
 echo Installation complete!
 echo It is currently ${DATE_FORMAT}
