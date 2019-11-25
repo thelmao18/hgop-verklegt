@@ -10,7 +10,17 @@ echo brew
 echo git
 echo NodeJS
 echo Installation started!
+if uname -s == "Linux"
+echo yeeeeedaaawg it linux
+endif
+
+if (uname -s == "Darwin")
+	{
+		echo yeet mac
+	}
 
 
+
+echo Installation complete!
 echo It is currently ${DATE_FORMAT}
 
