@@ -12,7 +12,7 @@ execute_script()
     echo Welcome to the setup script $USER!
     echo It is currently ${DATE_FORMAT}
     echo "We are currently running on $OP_SYS"
-    echo This script checks required programs and dependencies and installs all missing tools for you.
+    echo This script checks required programs and dependencies and installs all missing tools f    or you.
     echo These tools are: 
     echo brew
     echo git
@@ -27,6 +27,7 @@ execute_script()
 	    sudo apt-get install git
 	    sudo apt-get install nodejs
 	    sudo apt-get install npm
+
 
     fi
 
@@ -51,6 +52,12 @@ execute_script()
             #If node is not installed, then install.
             brew install node
         fi
+        
+        if test ! $(which aws);
+        then
+            #If aws is not installed, then install.
+            pip3 install awscli --upgrade --user
+        fi
     fi
    
     echo Installation complete!
@@ -60,6 +67,7 @@ execute_script()
     git --version
     echo -n "npm "
     npm --version
+    aws --version
     
     #check nodejs version since MacOS and Linux use different names
     if [ $OP_SYS = Darwin ]
