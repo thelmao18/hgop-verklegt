@@ -52,14 +52,14 @@ execute_script()
             #If node is not installed, then install.
             brew install node
         fi
-        
-        if test ! $(which aws);
-        then
-            #If aws is not installed, then install.
-            pip3 install awscli --upgrade --user
-        fi
     fi
    
+    if test ! $(which aws);
+    then
+        #If aws is not installed, then install.
+        pip3 install awscli --upgrade --user
+    fi
+
     echo Installation complete!
    
     #Print version
