@@ -27,7 +27,7 @@ execute_script()
 	    sudo apt-get install git
 	    sudo apt-get install nodejs
 	    sudo apt-get install npm
-
+            sudo apt-get install awscli
 
     fi
 
@@ -52,12 +52,13 @@ execute_script()
             #If node is not installed, then install.
             brew install node
         fi
-    fi
-   
-    if test ! $(which aws);
-    then
-        #If aws is not installed, then install.
-        pip3 install awscli --upgrade --user
+
+        if test ! $(which aws);
+        then
+            #If aws is not installed, then install.
+            brew install awscli
+        fi
+
     fi
 
     echo Installation complete!
