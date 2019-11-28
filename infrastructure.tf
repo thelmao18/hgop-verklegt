@@ -79,7 +79,9 @@ resource "aws_instance" "game_server" {
   # handle the retry logic, it will try to connect to the agent until it is available
   # that way we know the instance is available through SSH after Terraform finishes.
   # 
-  # TODO comment 1-2 sentences
+  # The following block instructs the server to make "initialize_game_api_instance.sh"
+  # an executable file, so we can run it and set up our Docker-compose application package
+  # in a single action.
   provisioner "remote-exec" {
     inline = [
       "chmod +x /home/ubuntu/initialize_game_api_instance.sh",
@@ -94,7 +96,8 @@ resource "aws_instance" "game_server" {
   }
 }
 
-# TODO Comment 1-2 sentences.
+# This block defines how terraform fetches the ip of the current running server.
+# I assume it uses the awsCLI API to do this
 output "public_ip" {
   value = aws_instance.game_server.public_ip
 }
