@@ -3,3 +3,6 @@
 *.tfstate.backup
 *.swp
 node_modules
+coverage/
+npm-debug.log
+../npm-debu.log
