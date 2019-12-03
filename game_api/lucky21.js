@@ -26,13 +26,13 @@ module.exports = (deck, dealer) => {
         },
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
-            let length = state.deck.length;
+            let length = state.cards.length;
             let no_of_aces = 0;
             let score = 0;
             for (i=0; length>i; i++)
             {
                 let card = state.cards[i];
-                let value = card.slice(0,1);
+                let value = card.slice(0,2);
                 let card_score = parseInt(value);
                 if (14 > card_score > 10)
                 {
@@ -45,17 +45,39 @@ module.exports = (deck, dealer) => {
                 }
                 score += card_score;
             }
+
             while (score > 21 && no_of_aces> 0)
             {
                 score -= 10;
-                no_of_aces -= 10;
+                no_of_aces -= 1;
             }
 
             return score;
         },
         // The value of the card that should exceed 21 if it exists (integer or undefined).
         getCardValue: (game) => {
-            // TODO
+            console.log(typeof state.card);
+            if (typeof state.card === 'undefined')
+            {
+                console.log("næsta print ætti að vera undefined");
+                console.log(typeof state.card);
+                return state.card;
+            }
+            console.log("næsta print ætti að vera string");
+            console.log(typeof state.card);
+            let value = state.card.slice(0,2);
+            let card_score = parseInt(value);
+            if (14 > card_score > 10)
+                {
+                    card_score = 10;
+                }
+                if (card_score == 1)
+                {
+                    card_score = 11;
+                }
+            return card_score;
+            
+
         },
         // The cards value + the card value if it exits (integer).
         getTotal: (game) => {
@@ -63,7 +85,9 @@ module.exports = (deck, dealer) => {
             {
                 return game.getCardsValue(game);
             }
-            return game.getCardsValue(game) + game.getCardValue(game);
+            let score = game.getCardsValue(game);
+            score += game.getCardValue(game);
+            return score;
         },
         // The player's cards (array of strings).
         getCards: (game) => {
