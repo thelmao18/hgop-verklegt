@@ -343,6 +343,24 @@ test('getCards should return the last 2 cards in the deck after the shuffle', ()
   expect(game.getCards(game)).toEqual(my_cards);
 });
 
-test('', () => {
-  //TODO
+test('The game should not end if the player draws all 4 aces while choosing Guess21OrUnder', () => {
+  // Arrange
+  let deck = deckConstructor();
+  deck = [
+      '01C', '01D', '01S', '01H', 
+  ];
+  let dealer = dealerConstructor();
+  // Override the shuffle to do nothing.
+  dealer.shuffle = (deck) => {};
+  
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+
+  //Act
+  game.guess21OrUnder(game);
+  game.guess21OrUnder(game);
+
+
+  // Assert
+  expect(game.isGameOver(game)).toEqual(False);
 });
