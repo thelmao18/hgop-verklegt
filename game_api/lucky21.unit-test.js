@@ -2,6 +2,22 @@ const deckConstructor = require('./deck.js');
 const dealerConstructor = require('./dealer.js');
 const lucky21Constructor = require('./lucky21.js');
 
+test('a new game should have 50 cards left in the deck', () => {
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+  
+  //Assert
+  expect(game.state.deck.length).toEqual(50);
+});
+
+test('a new game should have 2 drawn cards', () => {
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+
+  //Assert
+  expect(game.state.cards.length).toEqual(2);
+});
+
 test('guess21OrUnder should draw the next card', () => {
   // Arrange
   let deck = deckConstructor();
@@ -21,4 +37,126 @@ test('guess21OrUnder should draw the next card', () => {
   // Assert
   expect(game.state.cards.length).toEqual(3);
   expect(game.state.cards[2]).toEqual('01D');
+});
+
+test('isGameOver', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+
+  //Assert
+  expect()
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+});
+
+test('', () => {
+  //TODO
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
 });
