@@ -191,7 +191,7 @@ test('guessOver21, is 21 - the player loses', () => {
   expect(game.playerWon).toEqual(false);
 });
 
-test('PlayerWon', () => {
+test('playerWon', () => {
   //TODO
 
   // Inject our dependencies
