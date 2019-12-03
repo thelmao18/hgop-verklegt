@@ -72,7 +72,7 @@ test('guess21OrUnder, is over 21 - the player loses', () => {
   //Arrange
   let deck = deckConstructor();
   deck = [
-   '05D' , '11H', '09S', '03D', 
+   '05D' , 'JH', '09S', '03D', 
   ];
   let dealer = dealerConstructor();
 
@@ -121,19 +121,11 @@ test('isGameOver should return true if you exceed 21', () => {
   
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
-<<<<<<< HEAD
   
   // Act
   game.guess21OrUnder(game);
   //Assert
   expect(game.isGameOver(game)).toEqual(true)
-=======
-
-  game.isGameOver(game);
-
-  //Assert
-  expect(game.).toEqual(true);
->>>>>>> b9522963617fa52261fe04aedc4b1e63d9d8a9ee
 });
 
 test('guessOver21, is under 21 - the player loses', () => {
@@ -161,7 +153,7 @@ test('guessOver21, is over 21 - the player wins', () => {
   //Arrange
   let deck = deckConstructor();
   deck = [
-    '05C', '12D', '09S', '10H', 
+    '05C', 'QD', '09S', '10H', 
   ];
   let dealer = dealerConstructor();
 
@@ -260,14 +252,6 @@ test('getTotal should be lower than 22 if you have an ace with the value 10 and 
   
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
-<<<<<<< HEAD
-
-=======
-  
-  // act
-  game.guess21OrUnder(game);
-  
->>>>>>> b9522963617fa52261fe04aedc4b1e63d9d8a9ee
   // Assert
   expect(game.getTotal(game)).to.be.below(22);
 });
