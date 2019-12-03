@@ -235,10 +235,20 @@ test('PlayerWon, over 21', () => {
 });
 
 test('getCardsValue', () => {
-  //TODO
+  //Arrange
+  let deck = deckConstructor();
+  deck = [
+    '05C', '03D', '09S', '10H', 
+  ];
+  let dealer = dealerConstructor();
+
+  //.....still doing
 
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
+
+  //Assert
+  expect(game.getCardsValue(game)).toEqual(my_cards_val);
 });
 
 test('getCardValue', () => {
