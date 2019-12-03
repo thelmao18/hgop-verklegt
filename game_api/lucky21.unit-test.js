@@ -51,7 +51,7 @@ test('guess21OrUnder, is 21 - the player wins', () => {
   //Arrange
   let deck = deckConstructor();
   deck = [
-    '10H', '08C', '09S', '03D', 
+    '10H', '09C', '09S', '03D', 
   ];
   let dealer = dealerConstructor();
 
@@ -65,14 +65,15 @@ test('guess21OrUnder, is 21 - the player wins', () => {
   game.guess21OrUnder(game);
 
   //Assert
-  expect(game.playerWon).toEqual(true);
+  expect(game.isGameOver(game)).toEqual(true)
+  expect(game.playerWon(game)).toEqual(true);
 });
 
 test('guess21OrUnder, is over 21 - the player loses', () => {
   //Arrange
   let deck = deckConstructor();
   deck = [
-   '05D' , 'JH', '09S', '03D', 
+   '05D' , '11H', '09S', '04D', 
   ];
   let dealer = dealerConstructor();
 
@@ -86,7 +87,8 @@ test('guess21OrUnder, is over 21 - the player loses', () => {
   game.guess21OrUnder(game);
 
   //Assert
-  expect(game.playerWon).toEqual(false);
+  expect(game.isGameOver(game)).toEqual(true)
+  expect(game.playerWon(game)).toEqual(false);
 });
 
 test('guess21OrUnder, is under 21 - the game continues', () => {
@@ -107,7 +109,7 @@ test('guess21OrUnder, is under 21 - the game continues', () => {
   game.guess21OrUnder(game);
 
   //Assert
-  expect(game.isGameOver).toEqual(false);
+  expect(game.isGameOver(game)).toEqual(false);
 });
 
 test('isGameOver should return true if you exceed 21', () => {
@@ -133,7 +135,7 @@ test('guessOver21, is under 21 - the player loses', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
-      '05C', '01D', '09S', '10H', 
+      '05C', '02D', '08S', '10H', 
   ];
   let dealer = dealerConstructor();
   
@@ -147,7 +149,8 @@ test('guessOver21, is under 21 - the player loses', () => {
   let game = lucky21Constructor(deck, dealer);
 
   //Assert
-  expect(game.playerWon).toEqual(false);
+  expect(game.isGameOver(game)).toEqual(true)
+  expect(game.playerWon(game)).toEqual(false);
 });
 
 test('guessOver21, is over 21 - the player wins', () => {
@@ -168,7 +171,8 @@ test('guessOver21, is over 21 - the player wins', () => {
   let game = lucky21Constructor(deck, dealer);
 
   //Assert
-  expect(game.playerWon).toEqual(true);
+  expect(game.isGameOver(game)).toEqual(true)
+  expect(game.playerWon(game)).toEqual(true);
 });
 
 test('guessOver21, is 21 - the player loses', () => {
@@ -189,7 +193,8 @@ test('guessOver21, is 21 - the player loses', () => {
   let game = lucky21Constructor(deck, dealer);
 
   //Assert
-  expect(game.playerWon).toEqual(false);
+  expect(game.isGameOver(game)).toEqual(true)
+  expect(game.playerWon(game)).toEqual(false);
 });
 
 test('playerWon, 21 or under', () => {
