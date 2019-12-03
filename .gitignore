@@ -2,3 +2,4 @@
 *.tfstate
 *.tfstate.backup
 *.swp
+node_modules
