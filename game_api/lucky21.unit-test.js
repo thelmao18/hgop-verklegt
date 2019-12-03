@@ -111,18 +111,22 @@ test('guess21OrUnder, is under 21 - the game continues', () => {
   expect(game.isGameOver).toEqual(false)
 });
 
-test('isGameOver, 21 or under', () => {
-  //Arrange
+test('isGameOver should return true if you exceed 21', () => {
   let deck = deckConstructor();
+  deck = [
+      '05C', '10D', '09S', '10H', 
+  ];
   let dealer = dealerConstructor();
-
+  // Override the shuffle to do nothing.
+  dealer.shuffle = (deck) => {};
+  
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
-
-  game.isGameOver(game)
-
+  
+  // Act
+  game.guess21OrUnder(game);
   //Assert
-  expect(game.).toEqual(true)
+  expect(game.isGameOver(game)).toEqual(true)
 });
 
 test('guessOver21 is under 21', () => {
@@ -217,7 +221,7 @@ test('', () => {
   let game = lucky21Constructor(deck, dealer);
 });
 
-test('getTotal should be lower than 22 if you have an ace and roll over 21', () => {
+test('getTotal should be lower than 22 if you have an ace with the value 10 and have not yet lost', () => {
   // Arrange
   let deck = deckConstructor();
   deck = [
@@ -229,11 +233,7 @@ test('getTotal should be lower than 22 if you have an ace and roll over 21', () 
   
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
-  
-  // act
-  game.guess21OrUnder(game);
 
-  
   // Assert
   expect(game.getTotal(game)).to.be.below(22)
 });
@@ -245,9 +245,9 @@ test('getCards should return the last 2 cards in the deck after the shuffle', ()
   dealer.shuffle(deck);
 
   //save the last 2 cards in an array
-  card0 = deck[49];
-  card1 = deck[48];
-  my_cards = [card0, card1];
+  let card0 = deck[49];
+  let card1 = deck[48];
+  let my_cards = [card0, card1];
   // Override the shuffle to do nothing.
   dealer.shuffle = (deck) => {};
 
@@ -256,9 +256,26 @@ test('getCards should return the last 2 cards in the deck after the shuffle', ()
   let game = lucky21Constructor(deck, dealer);
 
   // Assert
-  expect(game.getCards).toEqual(my_cards);
+  expect(game.getCards(game)).toEqual(my_cards);
 });
 
-test('', () => {
-  //TODO
+test('guessOver21 should draw the next card', () => {
+  // Arrange
+  let deck = deckConstructor();
+  deck = [
+      '05C', '01D', '09S', '10H', 
+  ];
+  let dealer = dealerConstructor();
+  // Override the shuffle to do nothing.
+  dealer.shuffle = (deck) => {};
+  
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+  
+  // Act
+  game.guessOver21(game);
+  
+  // Assert
+  expect(game.state.cards.length).toEqual(3);
+  expect(game.state.cards[2]).toEqual('01D');
 });
