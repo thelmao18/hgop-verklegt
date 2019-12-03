@@ -27,6 +27,7 @@ module.exports = (deck, dealer) => {
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
             let length = state.deck.length;
+            let no_of_aces = 0;
             let score = 0;
             for (i=0; length>i; i++)
             {
@@ -37,8 +38,19 @@ module.exports = (deck, dealer) => {
                 {
                     card_score = 10;
                 }
+                if (card_score == 1)
+                {
+                    no_of_aces += 1;
+                    card_score = 11;
+                }
                 score += card_score;
             }
+            while (score > 21 && no_of_aces> 0)
+            {
+                score -= 10;
+                no_of_aces -= 10;
+            }
+
             return score;
         },
         // The value of the card that should exceed 21 if it exists (integer or undefined).
@@ -47,7 +59,11 @@ module.exports = (deck, dealer) => {
         },
         // The cards value + the card value if it exits (integer).
         getTotal: (game) => {
-            // TODO
+            if (typeof game.getCardValue(game) == undefined)
+            {
+                return game.getCardsValue(game);
+            }
+            return game.getCardsValue(game) + game.getCardValue(game);
         },
         // The player's cards (array of strings).
         getCards: (game) => {
@@ -61,7 +77,7 @@ module.exports = (deck, dealer) => {
         guess21OrUnder: (game) => {
             let card = dealer.draw(deck);
             state.cards.push(card);
-            let score = getCardsValue(game);
+            let score = game.getCardsValue(game);
             if (score>=21)
             {
                 state.over = true;
