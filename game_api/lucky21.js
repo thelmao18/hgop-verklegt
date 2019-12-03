@@ -26,7 +26,20 @@ module.exports = (deck, dealer) => {
         },
         // The highest score the cards can yield without going over 21 (integer).
         getCardsValue: (game) => {
-            // TODO
+            let length = state.deck.length;
+            let score = 0;
+            for (i=0; length>i; i++)
+            {
+                let card = state.cards[i];
+                let value = card.slice(0,1);
+                let card_score = parseInt(value);
+                if (14 > card_score > 10)
+                {
+                    card_score = 10;
+                }
+                score += card_score;
+            }
+            return score;
         },
         // The value of the card that should exceed 21 if it exists (integer or undefined).
         getCardValue: (game) => {
@@ -38,11 +51,11 @@ module.exports = (deck, dealer) => {
         },
         // The player's cards (array of strings).
         getCards: (game) => {
-            // TODO
+            return state.cards;
         },
         // The player's card (string or undefined).
         getCard: (game) => {
-            // TODO
+            return state.card;
         },
         // Player action (void).
         guess21OrUnder: (game) => {
