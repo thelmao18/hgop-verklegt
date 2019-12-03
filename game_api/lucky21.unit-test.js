@@ -199,28 +199,28 @@ test('guessOver21, is 21 - the player loses', () => {
   expect(game.playerWon).toEqual(false);
 });
 
-test('', () => {
+test('PlayerWon', () => {
   //TODO
 
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
 });
 
-test('', () => {
+test('getCardsValue', () => {
   //TODO
 
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
 });
 
-test('', () => {
+test('getCardValue', () => {
   //TODO
 
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
 });
 
-test('', () => {
+test('getCard', () => {
   //TODO
 
   // Inject our dependencies
