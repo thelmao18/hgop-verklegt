@@ -240,20 +240,10 @@ test('PlayerWon, over 21', () => {
 });
 
 test('getCardsValue', () => {
-  //Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '03D', '09S', '10H', 
-  ];
-  let dealer = dealerConstructor();
-
-  //.....still doing
+  //TODO
 
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
-
-  //Assert
-  expect(game.getCardsValue(game)).toEqual(my_cards_val);
 });
 
 test('getCardValue should return undefined if player chooses guess21OrUnder', () => {
@@ -283,7 +273,7 @@ test('getCardValue should return int after choosing guessOver21', () => {
   game.guessOver21(game);
 
   //Assert
-  expect(game.getCardValue(game)).to.be.a(number);
+  expect(game.getCardValue(game)).to.be.a(Number);
 });
 
 test('getCard should return undefined after choosing guess21OrUnder', () => {
