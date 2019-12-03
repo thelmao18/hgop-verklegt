@@ -3,6 +3,11 @@ const dealerConstructor = require('./dealer.js');
 const lucky21Constructor = require('./lucky21.js');
 
 test('a new game should have 50 cards left in the deck', () => {
+  //Arrange
+  let deck = deckConstructor();
+  let dealer = dealerConstructor();
+
+
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
   
@@ -11,6 +16,10 @@ test('a new game should have 50 cards left in the deck', () => {
 });
 
 test('a new game should have 2 drawn cards', () => {
+  //Arrange
+  let deck = deckConstructor();
+  let dealer = dealerConstructor();
+  
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
 
