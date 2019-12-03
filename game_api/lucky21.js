@@ -30,6 +30,7 @@ module.exports = (deck, dealer) => {
         getCardValue: (game) => {
             // TODO
         },
+        // The cards value + the card value if it exits (integer).
         getTotal: (game) => {
             // TODO
         },
