@@ -15,11 +15,12 @@ node {
 
 
     stage("Lint") {
-        sh "npm run lint"
+        //sh "npm run lint"
     }
 
 
     stage("Test") {
+        sh "npm run test:unit" 
 
     }
 
