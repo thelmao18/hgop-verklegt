@@ -14,7 +14,6 @@ node {
         {
             sh "npm install"
         }
-        sh "ls"
     }
 
 
@@ -24,7 +23,6 @@ node {
         {
             sh "npm run eslint"
         }
-        sh "ls"
         
     }
 
@@ -40,10 +38,15 @@ node {
 
     stage("Build")
     {
+        sh "ls"
         sh "chmod +x scripts/docker_build.sh"
+        sh "ls"
         sh "chmod +x scripts/docker_push.sh"
+        sh "ls"
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
+        sh "ls"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
+        sh "ls"
     }
 
 
