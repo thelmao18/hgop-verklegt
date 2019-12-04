@@ -38,20 +38,16 @@ node {
 
     stage("Build")
     {
-        sh "ls"
         sh "chmod +x scripts/docker_build.sh"
-        sh "ls"
         sh "chmod +x scripts/docker_push.sh"
-        sh "ls"
         sh "./scripts/docker_build.sh ${git.GIT_COMMIT}"
-        sh "ls"
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
-        sh "ls"
     }
 
 
     stage("Deploy")
     {
+        sh "ls"
         sh "chmod +x scripts/jenkins_deploy.sh && ./scripts/jenkins_deploy.sh"
     }
     
