@@ -21,7 +21,7 @@ node {
 
 
     stage("Test") {
-        sh "npm run game_api/test:unit" 
+        sh "npm run test:unit" 
 
     }
 
