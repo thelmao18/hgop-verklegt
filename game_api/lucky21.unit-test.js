@@ -256,17 +256,11 @@ test('13. getCardsValue should return 12 if you are dealt two aces', () => {
   
   // Assert
   expect(game.getCardsValue(game)).toEqual(12);
-});
 
 test('14. getCardValue should return undefined if player chooses guess21OrUnder', () => {
   //Arrange
   let deck = deckConstructor();
   let dealer = dealerConstructor();
-
-  var my_cards_val = 0;
-  for (index = 0; index < deck.length; index++) {
-    my_cards_val += parseInt(deck[index], 10);
-  };
 
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
