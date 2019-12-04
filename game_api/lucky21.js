@@ -34,7 +34,7 @@ module.exports = (deck, dealer) => {
                 let card = state.cards[i];
                 let value = card.slice(0,2);
                 let card_score = parseInt(value);
-                if (14 > card_score > 10)
+                if (14 > card_score && card_score > 10)
                 {
                     card_score = 10;
                 }
@@ -62,7 +62,7 @@ module.exports = (deck, dealer) => {
             }
             let value = state.card.slice(0,2);
             let card_score = parseInt(value);
-            if (14 > card_score > 10)
+            if (14 > card_score && card_score > 10)
                 {
                     card_score = 10;
                 }
@@ -76,10 +76,15 @@ module.exports = (deck, dealer) => {
         },
         // The cards value + the card value if it exits (integer).
         getTotal: (game) => {
-            if (typeof game.getCardValue(game) == undefined)
-            {
-                return game.getCardsValue(game);
-            }
+            //Following code block commented out when we realised getTotal is never called except after 
+            //calling "guessOver21", after which the card value will be defined.
+
+            //if (typeof game.getCardValue(game) === 'undefined')
+            //{
+            //    return game.getCardsValue(game);
+            //}
+
+
             let score = game.getCardsValue(game);
             score += game.getCardValue(game);
             return score;

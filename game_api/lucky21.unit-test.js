@@ -51,7 +51,7 @@ test('4. guess21OrUnder, is 21 - the player wins', () => {
   //Arrange
   let deck = deckConstructor();
   deck = [
-    '10H', '09C', '09S', '03D', 
+    '10H', '02C', '09S', '12D', 
   ];
   let dealer = dealerConstructor();
 
@@ -256,6 +256,7 @@ test('13. getCardsValue should return 12 if you are dealt two aces', () => {
   
   // Assert
   expect(game.getCardsValue(game)).toEqual(12);
+});
 
 test('14. getCardValue should return undefined if player chooses guess21OrUnder', () => {
   //Arrange
@@ -392,4 +393,27 @@ test('21. The game should not end if the player draws all 4 aces while choosing 
 
   // Assert
   expect(game.isGameOver(game)).toEqual(false);
+});
+
+test('22. guessOver21, is over 21 because of an ace- the player wins', () => {
+  //Arrange
+  let deck = deckConstructor();
+  deck = [
+    '05C', '01D', '09S', '05H', 
+  ];
+  let dealer = dealerConstructor();
+
+  // Override the shuffle to do nothing.
+  dealer.shuffle = (deck) => {};
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+
+  // Act
+  game.guessOver21(game);
+
+
+  //Assert
+  expect(game.isGameOver(game)).toEqual(true)
+  expect(game.playerWon(game)).toEqual(true);
 });
