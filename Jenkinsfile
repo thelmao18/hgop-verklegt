@@ -18,6 +18,7 @@ node {
     stage("Lint") {
         sh "pwd"
         sh "ls -l"
+        sh "cd game_api"
         sh "npm run lint"
     }
 
