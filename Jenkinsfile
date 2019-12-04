@@ -8,6 +8,8 @@ node {
 
 
     stage("Setup") {
+        sh "npm install jest --save-dev"
+        sh "npm install eslint --save-dev"
         
     }
 
