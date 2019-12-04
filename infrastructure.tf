@@ -59,6 +59,18 @@ resource "aws_instance" "game_server" {
     }
   }
 
+  provisioner "file" {
+    source      = "scripts/docker_compose_up.sh"
+    destination = "/home/ubuntu/docker_compose_up.sh"
+
+    connection {
+      host        = coalesce(self.public_ip, self.private_ip)
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/.aws/GameKeyPair.pem")
+    }
+  }
+
   # Similar to above, finds and sends the docker composition configuration file
   # over to the AWS cloud server so our system can be correctly assembled.
   provisioner "file" {
