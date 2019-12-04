@@ -10,7 +10,10 @@ node {
 
     stage("Setup")
     {
-        
+        dir("./game_api")
+        {
+            sh "npm install"
+        }
     }
 
 
