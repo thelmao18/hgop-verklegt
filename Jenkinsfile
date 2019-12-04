@@ -14,6 +14,7 @@ node {
         {
             sh "npm install"
         }
+        sh "ls"
     }
 
 
@@ -23,6 +24,7 @@ node {
         {
             sh "npm run eslint"
         }
+        sh "ls"
         
     }
 
@@ -32,7 +34,6 @@ node {
         dir("./game_api")
         {
             sh "npm run test:unit"
-            sh "ls"
         }
     }
 
