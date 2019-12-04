@@ -2,6 +2,7 @@ node {
     def git = checkout scm
     stage("Clean")
     {
+        sh "ls"
         sh "echo 'Cleaning generated artifacts'"
         sh "git clean -dfxq"
         sh "git stash"
