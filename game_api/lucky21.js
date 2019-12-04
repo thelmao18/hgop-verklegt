@@ -56,15 +56,10 @@ module.exports = (deck, dealer) => {
         },
         // The value of the card that should exceed 21 if it exists (integer or undefined).
         getCardValue: (game) => {
-            console.log(typeof state.card);
             if (typeof state.card === 'undefined')
             {
-                console.log("næsta print ætti að vera undefined");
-                console.log(typeof state.card);
                 return state.card;
             }
-            console.log("næsta print ætti að vera string");
-            console.log(typeof state.card);
             let value = state.card.slice(0,2);
             let card_score = parseInt(value);
             if (14 > card_score > 10)
