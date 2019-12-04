@@ -17,12 +17,14 @@ node {
 
     stage("Lint") {
         sh "pwd"
+        sh "ls -l"
         sh "npm run lint"
     }
 
 
     stage("Test") {
         sh "pwd"
+        sh "ls -l"
         sh "npm run test:unit" 
 
     }
