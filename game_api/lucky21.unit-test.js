@@ -241,11 +241,21 @@ test('12. PlayerWon, over 21', () => {
   expect(game.playerWon(game)).toEqual(true);
 });
 
-test('13. getCardsValue', () => {
-  //TODO
-
+test('13. getCardsValue should return 12 if you are dealt two aces', () => {
+  // Arrange
+  let deck = deckConstructor();
+  deck = [
+      '05C', '01D', '01S', '01H', 
+  ];
+  let dealer = dealerConstructor();
+  // Override the shuffle to do nothing.
+  dealer.shuffle = (deck) => {};
+  
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
+  
+  // Assert
+  expect(game.getCardsValue(game)).toEqual(12);
 });
 
 test('14. getCardValue should return undefined if player chooses guess21OrUnder', () => {
