@@ -16,7 +16,11 @@ node {
 
 
     stage("Lint") {
-        sh "cd game_api && npm run eslint"
+        dir("./game_api")
+        {
+            sh "npm run eslint"
+        }
+        
     }
 
 
