@@ -13,7 +13,7 @@ node {
 
 
     stage("Lint") {
-        sh "npm run lint"
+        sh "npm run eslint"
     }
 
 
