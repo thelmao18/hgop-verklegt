@@ -8,9 +8,12 @@ node {
 
 
     stage("Setup") {
-        //sh "cd game_api"
-        //sh "npm install jest --save-dev"
-        //sh "npm install eslint --save-dev"
+        dir("./game_api")
+        {
+            sh "npm install jest --save-dev"
+            sh "npm install eslint --save-dev"
+        }
+        
         
     }
 
