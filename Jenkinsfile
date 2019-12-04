@@ -11,7 +11,7 @@ node {
         dir("./game_api")
         {
             sh "npm install jest --save-dev"
-            sh "npm install eslint --save-dev"
+            //sh "npm install eslint --save-dev"
         }
         
         
@@ -21,17 +21,17 @@ node {
     stage("Lint") {
         dir("./game_api")
         {
-            sh "npm run eslint"
+            //sh "npm run eslint"
         }
         
     }
 
 
     stage("Test") {
-        sh "pwd"
-        sh "ls -l"
-        sh "npm run test:unit" 
-
+        dir("./game_api")
+        {
+            sh "npm run test:unit"
+        }
     }
 
 
