@@ -48,7 +48,7 @@ node {
     stage("Deploy")
     {
         sh "ls"
-        sh "chmod +x scripts/jenkins_deploy.sh && ./scripts/jenkins_deploy.sh"
+        sh "chmod +x scripts/jenkins_deploy.sh && ./scripts/jenkins_deploy.sh ${git.GIT_COMMIT}"
     }
     
 }
