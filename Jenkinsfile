@@ -12,7 +12,7 @@ node {
     {
         dir("./game_api")
         {
-            sh "npm install"
+            sh "npm install --silent"
         }
     }
 
