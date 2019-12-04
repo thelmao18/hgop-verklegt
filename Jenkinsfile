@@ -8,12 +8,12 @@ node {
 
 
     stage("Setup") {
-
+        
     }
 
 
     stage("Lint") {
-        sh "npm run eslint"
+        sh "npm run lint"
     }
 
 
