@@ -47,6 +47,7 @@ node {
 
     stage("Deploy")
     {
+        sh "ls"
         sh "chmod +x scripts/jenkins_deploy.sh && ./scripts/jenkins_deploy.sh"
     }
     
