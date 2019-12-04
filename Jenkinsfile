@@ -8,7 +8,6 @@ node {
 
 
     stage("Setup") {
-        sh "npm install jest --global"
 
     }
 
