@@ -6,6 +6,7 @@ node {
         sh "echo 'Cleaning generated artifacts'"
         sh "git clean -dfxq"
         sh "git stash"
+        sh "ls"
     }
 
 
