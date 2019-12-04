@@ -8,6 +8,7 @@ node {
 
 
     stage("Setup") {
+        sh "cd game_api"
         sh "npm install jest --save-dev"
         sh "npm install eslint --save-dev"
         
@@ -20,7 +21,7 @@ node {
 
 
     stage("Test") {
-        sh "npm run test:unit" 
+        sh "npm run game_api/test:unit" 
 
     }
 
