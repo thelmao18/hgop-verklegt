@@ -16,11 +16,7 @@ node {
 
 
     stage("Lint") {
-        sh "pwd"
-        sh "ls -l"
-        sh "cd game_api"
-        sh "pwd"
-        sh "npm run lint"
+        sh "cd game_api && npm run eslint"
     }
 
 
