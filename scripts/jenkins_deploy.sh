@@ -12,15 +12,13 @@ cp scripts/docker_compose_up.sh /var/lib/jenkins/terraform/hgop/production/scrip
 rm -f /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
 cp docker-compose.yml /var/lib/jenkins/terraform/hgop/production/docker-compose.yml
 
-ls
 rm -f /var/lib/jenkins/terraform/hgop/production/*.tf
-ls
 cp *.tf /var/lib/jenkins/terraform/hgop/production
 
 cd /var/lib/jenkins/terraform/hgop/production
-terraform init ｜｜ exit 1 # In case terraform is not initialized.
-terraform destroy -auto-approve ｜｜ exit 1
-terraform apply -auto-approve ｜｜ exit 1
+terraform init # In case terraform is not initialized.
+terraform destroy -auto-approve
+terraform apply -auto-approve
 
 echo "Game API running at " + $(terraform output public_ip)
 
