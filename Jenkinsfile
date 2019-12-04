@@ -47,7 +47,10 @@ node {
 
     stage("Deploy")
     {
-
+        dir("./scripts")
+        {
+            sh "chmod +x jenkins_deploy.sh && ./jenkins_deploy.sh"
+        }
     }
     
 }
