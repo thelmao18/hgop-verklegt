@@ -19,6 +19,7 @@ node {
         sh "pwd"
         sh "ls -l"
         sh "cd game_api"
+        sh "pwd"
         sh "npm run lint"
     }
 
