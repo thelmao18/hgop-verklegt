@@ -240,21 +240,29 @@ test('PlayerWon, over 21', () => {
 });
 
 test('getCardsValue', () => {
-  //TODO
-
-  // Inject our dependencies
-  let game = lucky21Constructor(deck, dealer);
-});
-
-test('getCardValue should return undefined if player chooses guess21OrUnder', () => {
   //Arrange
   let deck = deckConstructor();
+  deck = [
+    '05C', '03D', '09S', '10H', 
+  ];
   let dealer = dealerConstructor();
 
   var my_cards_val = 0;
   for (index = 0; index < deck.length; index++) {
     my_cards_val += parseInt(deck[index], 10);
   };
+
+  // Inject our dependencies
+  let game = lucky21Constructor(deck, dealer);
+
+  //Assert
+  expect(game.getCardsValue(game)).toEqual(my_cards_val);
+});
+
+test('getCardValue should return undefined if player chooses guess21OrUnder', () => {
+  //Arrange
+  let deck = deckConstructor();
+  let dealer = dealerConstructor();
 
   // Inject our dependencies
   let game = lucky21Constructor(deck, dealer);
