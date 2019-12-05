@@ -359,24 +359,15 @@ test('19. getTotal should return the highest possible compination after calling 
   expect(game.getTotal(game)).toEqual(30);
 });
 
-test('20. getCards should return the last 2 cards in the deck after the shuffle', () => {
+test('20. getCards should return the last 3  items after you have been dealt a card', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
-  dealer.shuffle(deck);
+  let game = lucky21Constructor(context);
 
-  // save the last 2 cards in an array
-  const card0 = deck[51];
-  const card1 = deck[50];
-  const myCards = [card0, card1];
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
-
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  //Act
+  game.guess21OrUnder(game);
 
   // Assert
-  expect(game.getCards(game)).toEqual(myCards);
+  expect(game.getCards(game).length).toEqual(3);
 });
 
 test('21. The game should not end if the player draws all 4 aces while choosing Guess21OrUnder', () => {
