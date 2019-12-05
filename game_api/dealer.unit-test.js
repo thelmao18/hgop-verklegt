@@ -1,4 +1,5 @@
 let context = require("./context.js").newContext();
+let dealerConstructor = require("./dealer.js");
 
 function newRandom(randomReturnValues) {
   let i = 0;
@@ -29,7 +30,6 @@ test('dealer should shuffle cards', () => {
 
 test('shuffle should return a deck of equal length to the original deck', () => 
 {
-  let dealerConstructor = require("./dealer.js");
   let dealer = dealerConstructor(context);
   let deck = ['a', 'b', 'c', 'd', 'e', 'f']
 

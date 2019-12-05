@@ -1,8 +1,20 @@
 let context = require("./context.js").newContext();
+let lucky21Constructor = require('./lucky21.js');
+let deckConstructor = require("./deck.js");
+let dealerConstructor = require("./dealer.js");
+
+function voidRandom() {
+  //randomInt returns input
+  return {
+    randomInt: (min, max) => {
+      return min;
+    }
+  }
+}
+
 
 test('1. a new game should have 50 cards left in the deck', () => {
   // Arrange
-  let lucky21Constructor = require('./lucky21.js');
   let game = lucky21Constructor(context);
 
 
@@ -12,11 +24,7 @@ test('1. a new game should have 50 cards left in the deck', () => {
 
 test('2. a new game should have 2 drawn cards', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
-
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  const game = lucky21Constructor(context);
 
   // Assert
   expect(game.state.cards.length).toEqual(2);
@@ -24,16 +32,19 @@ test('2. a new game should have 2 drawn cards', () => {
 
 test('3. guess21OrUnder should draw the next card', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '01D', '09S', '10H',
-  ];
-  const dealer = dealerConstructor();
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '01D', '09S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guess21OrUnder(game);
@@ -45,7 +56,6 @@ test('3. guess21OrUnder should draw the next card', () => {
 
 test('4. guess21OrUnder, is 21 - the player wins', () => {
   // Arrange
-  let deck = deckConstructor();
   deck = [
     '10H', '02C', '09S', '12D',
   ];
