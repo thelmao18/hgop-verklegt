@@ -1,14 +1,8 @@
-const deckConstructor = require('./deck.js');
-const dealerConstructor = require('./dealer.js');
-const lucky21Constructor = require('./lucky21.js');
-
 test('1. a new game should have 50 cards left in the deck', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
+  let lucky21Constructor = require('./lucky21.js');
+  let game = lucky21Constructor();
 
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
 
   // Assert
   expect(game.state.deck.length).toEqual(50);

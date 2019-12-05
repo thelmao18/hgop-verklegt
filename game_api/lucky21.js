@@ -1,14 +1,14 @@
 module.exports = (context) => {
-  const deckConstructor = context('deck');
-  const deck = deckConstructor(context);
+  let deckConstructor = context('deck');
+  let deck = deckConstructor(context);
 
-  const dealerConstructor = context('dealer');
-  const dealer = dealerConstructor(context);
+  let dealerConstructor = context('dealer');
+  let dealer = dealerConstructor(context);
 
   dealer.shuffle(deck);
-  const card0 = dealer.draw(deck);
-  const card1 = dealer.draw(deck);
-  const state = {
+  let card0 = dealer.draw(deck);
+  let card1 = dealer.draw(deck);
+  let state = {
     deck: deck,
     dealer: dealer,
     cards: [
