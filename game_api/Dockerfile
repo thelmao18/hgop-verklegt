@@ -32,4 +32,4 @@ COPY context.js context.js
 
 #When a container is initialized from this image, it will execute 
 #this line when ready (run app.js).
-CMD node app.js
+CMD node server.js
