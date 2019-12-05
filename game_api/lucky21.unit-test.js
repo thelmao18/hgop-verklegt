@@ -56,16 +56,19 @@ test('3. guess21OrUnder should draw the next card', () => {
 
 test('4. guess21OrUnder, is 21 - the player wins', () => {
   // Arrange
-  deck = [
-    '10H', '02C', '09S', '12D',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['10H', '02C', '09S', '12D'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guess21OrUnder(game);
@@ -77,17 +80,19 @@ test('4. guess21OrUnder, is 21 - the player wins', () => {
 
 test('5. guess21OrUnder, is over 21 - the player loses', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05D', '11H', '09S', '04D',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05D', '11H', '09S', '04D'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guess21OrUnder(game);
@@ -99,17 +104,19 @@ test('5. guess21OrUnder, is over 21 - the player loses', () => {
 
 test('6. guess21OrUnder, is under 21 - the game continues', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05D', '05H', '09S', '03D',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05D', '05H', '09S', '03D'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guess21OrUnder(game);
@@ -119,16 +126,21 @@ test('6. guess21OrUnder, is under 21 - the game continues', () => {
 });
 
 test('7. isGameOver should return true if you exceed 21', () => {
-  let deck = deckConstructor();
-  deck = [
-    '05C', '10D', '09S', '10H',
-  ];
-  const dealer = dealerConstructor();
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  //Arrange
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '10D', '09S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
+
 
   // Act
   game.guess21OrUnder(game);
@@ -139,17 +151,19 @@ test('7. isGameOver should return true if you exceed 21', () => {
 
 test('8. guessOver21, is under 21 - the player loses', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '02D', '08S', '10H',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '02D', '08S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guessOver21(game);
@@ -161,17 +175,19 @@ test('8. guessOver21, is under 21 - the player loses', () => {
 
 test('9. guessOver21, is over 21 - the player wins', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '12D', '09S', '10H',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '12D', '09S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guessOver21(game);
@@ -184,18 +200,19 @@ test('9. guessOver21, is over 21 - the player wins', () => {
 
 test('10. guessOver21, is 21 - the player loses', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '02D', '09S', '10H',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
-
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '02D', '09S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guessOver21(game);
@@ -341,16 +358,19 @@ test('18. getCard should return a string after choosing guessOver21', () => {
 
 test('19. getTotal should return the highest possible compination after calling GuessOver21', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '09D', '01S', '10H',
-  ];
-  const dealer = dealerConstructor();
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '09D', '01S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   game.guessOver21(game);
 
@@ -402,17 +422,19 @@ test('21. The game should not end if the player draws all 4 aces while choosing 
 
 test('22. guessOver21, is over 21 because of an ace- the player wins', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '01D', '09S', '05H',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '01D', '09S', '05H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guessOver21(game);

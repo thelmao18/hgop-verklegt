@@ -15,6 +15,8 @@ module.exports = (context) => {
       card0,
       card1,
     ],
+    over: false,
+    won: false,
     // The card that the player thinks will exceed 21.
     card: undefined,
   };
