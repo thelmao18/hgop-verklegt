@@ -224,17 +224,19 @@ test('10. guessOver21, is 21 - the player loses', () => {
 
 test('11. playerWon, 21 or under', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '02D', '09S', '10H',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '02D', '09S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guess21OrUnder(game);
@@ -245,17 +247,19 @@ test('11. playerWon, 21 or under', () => {
 
 test('12. PlayerWon, over 21', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '03D', '09S', '10H',
-  ];
-  const dealer = dealerConstructor();
-
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '03D', '09S', '10H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guessOver21(game);
@@ -266,16 +270,19 @@ test('12. PlayerWon, over 21', () => {
 
 test('13. getCardsValue should return 12 if you are dealt two aces', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '05C', '01D', '01S', '01H',
-  ];
-  const dealer = dealerConstructor();
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['05C', '01D', '01S', '01H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Assert
   expect(game.getCardsValue(game)).toEqual(12);
