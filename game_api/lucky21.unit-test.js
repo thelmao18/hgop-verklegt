@@ -283,11 +283,7 @@ test('13. getCardsValue should return 12 if you are dealt two aces', () => {
 
 test('14. getCardValue should return undefined if player chooses guess21OrUnder', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
-
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let game = lucky21Constructor(context);
 
   // Act
   game.guess21OrUnder(game);
@@ -298,11 +294,7 @@ test('14. getCardValue should return undefined if player chooses guess21OrUnder'
 
 test('15. getCardValue should return undefined if player chooses guess21OrUnder', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
-
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let game = lucky21Constructor(context);
 
   // Act
   game.guess21OrUnder(game);
@@ -313,11 +305,8 @@ test('15. getCardValue should return undefined if player chooses guess21OrUnder'
 
 test('16. getCardValue should return int after choosing guessOver21', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
+  let game = lucky21Constructor(context);
 
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
 
   // Act
   game.guessOver21(game);
@@ -328,11 +317,7 @@ test('16. getCardValue should return int after choosing guessOver21', () => {
 
 test('17. getCard should return undefined after choosing guess21OrUnder', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
-
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let game = lucky21Constructor(context);
 
   // Act
   game.guess21OrUnder(game);
@@ -343,11 +328,7 @@ test('17. getCard should return undefined after choosing guess21OrUnder', () => 
 
 test('18. getCard should return a string after choosing guessOver21', () => {
   // Arrange
-  const deck = deckConstructor();
-  const dealer = dealerConstructor();
-
-  // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let game = lucky21Constructor(context);
 
   // Act
   game.guessOver21(game);
@@ -400,16 +381,19 @@ test('20. getCards should return the last 2 cards in the deck after the shuffle'
 
 test('21. The game should not end if the player draws all 4 aces while choosing Guess21OrUnder', () => {
   // Arrange
-  let deck = deckConstructor();
-  deck = [
-    '01C', '01D', '01S', '01H',
-  ];
-  const dealer = dealerConstructor();
-  // Override the shuffle to do nothing.
-  dealer.shuffle = (deck) => {};
+  let dependencies = {
+    'random': () => voidRandom(),
+    "deck": () => ['01C', '01D', '01S', '01H'],
+    "dealer": () => dealerConstructor((name) => {
+      return dependencies[name];
+  }),
+  };
 
   // Inject our dependencies
-  const game = lucky21Constructor(deck, dealer);
+  let newGameConstructor = require("./lucky21.js");
+  let game = newGameConstructor((name) => {
+    return dependencies[name];
+  });
 
   // Act
   game.guess21OrUnder(game);
