@@ -1,18 +1,22 @@
-module.exports = (deck, dealer) => {
+module.exports = (context) => {
+  let deckConstructor = context('deck');
+  let deck = deckConstructor(context);
+  
+  let dealerConstructor = context('dealer');
+  let dealer = dealerConstructor(context);
+  
   dealer.shuffle(deck);
-  const card0 = dealer.draw(deck);
-  const card1 = dealer.draw(deck);
-  const state = {
-    deck: deck,
-    dealer: dealer,
-    cards: [
-      card0,
-      card1,
-    ],
-    over: false,
-    won: false,
-    // The card that the player thinks will exceed 21.
-    card: undefined,
+  let card0 = dealer.draw(deck);
+  let card1 = dealer.draw(deck);
+  let state = {
+      deck: deck,
+      dealer: dealer,
+      cards: [
+          card0,
+          card1,
+      ],
+      // The card that the player thinks will exceed 21.
+      card: undefined,
   };
   return {
     state: state,
@@ -107,6 +111,17 @@ module.exports = (deck, dealer) => {
       if (game.getTotal(game) > 21) {
         state.won = true;
       }
+    },
+    getState: (game) => {
+      return {
+          cards: game.state.cards,
+          cardsValue: game.getCardsValue(game),
+          card: game.state.card,
+          cardValue: game.getCardValue(game),
+          total: game.getTotal(game),
+          gameOver: game.isGameOver(game),
+          playerWon: game.playerWon(game),
+      };
     },
   };
 };
