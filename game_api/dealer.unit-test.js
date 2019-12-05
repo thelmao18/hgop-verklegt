@@ -1,56 +1,52 @@
-let context = require("./context.js").newContext();
-let dealerConstructor = require("./dealer.js");
+const context = require('./context.js').newContext();
+const dealerConstructor = require('./dealer.js');
 
 function newRandom(randomReturnValues) {
   let i = 0;
   return {
-      randomInt: (min, max) => {
-          return randomReturnValues[i++];
-      }
+    randomInt: (min, max) => {
+      return randomReturnValues[i++];
+    },
   };
 }
 
 
 test('dealer should shuffle cards', () => {
   // Arrange
-  let dependencies = {
-      'random': () => newRandom([2, 1]),
+  const dependencies = {
+    'random': () => newRandom([2, 1]),
   };
-  let newDealer = require('./dealer.js');
-  let dealer = newDealer((name) => {
-      return dependencies[name];
+  const newDealer = require('./dealer.js');
+  const dealer = newDealer((name) => {
+    return dependencies[name];
   });
-  let deck = ['a', 'b', 'c'];
+  const deck = ['a', 'b', 'c'];
 
   // Act
-  dealer.shuffle(deck)
+  dealer.shuffle(deck);
   // Assert
   expect(deck).toEqual(['c', 'b', 'a']);
 });
 
-test('shuffle should return a deck of equal length to the original deck', () => 
-{
-  let dealer = dealerConstructor(context);
-  let deck = ['a', 'b', 'c', 'd', 'e', 'f']
+test('shuffle should return a deck of equal length to the original deck', () => {
+  const dealer = dealerConstructor(context);
+  const deck = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-  //Act
+  // Act
   dealer.shuffle(deck);
 
-  //assert
+  // assert
   expect(deck.length).toEqual(6);
 });
 
-test('shuffle', () => 
-{
-  
+test('shuffle', () => {
+
 });
 
-test('draw', () => 
-{
-  
+test('draw', () => {
+
 });
 
-test('draw', () => 
-{
-  
+test('draw', () => {
+
 });

@@ -22,6 +22,8 @@
         "react"
     ],
     "rules": {
-        "max-len": [2, 150, 4]
+        "max-len": [2, 150, 4],
+        "no-multi-str": [0],
+        "require-jsdoc": [0]
     }
 }
