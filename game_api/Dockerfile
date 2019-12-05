@@ -20,6 +20,22 @@ RUN npm install
 COPY database.js database.js
 
 COPY app.js app.js
+
+COPY context.js context.js
+
+COPY lucky21.js lucky21.js
+
+COPY deck.js deck.js
+
+COPY dealer.js dealer.js
+
+COPY server.js server.js
+
+COPY inject.js inject.js
+
+COPY random.js random.js
+
+COPY config.js config.js
 #When a container is initialized from this image, it will execute 
 #this line when ready (run app.js).
 CMD node app.js
