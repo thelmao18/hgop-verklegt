@@ -1,41 +1,44 @@
-const {Client} = require('pg');
 
 // export available database functions.
-module.exports = {
-  insertItem: (name, insertDate, onInsert) => {
-    const client = getClient();
-    client.connect(() => {
-      const query = {
-        text: 'INSERT INTO Item(Name, InsertDate) VALUES($1, $2);',
-        values: [name, insertDate],
-      };
-      client.query(query, () => {
-        onInsert();
-        client.end();
+module.exports = (context) => {
+
+const Client = context('pgClient');
+  return {
+    insertItem: (name, insertDate, onInsert) => {
+      const client = getClient();
+      client.connect(() => {
+        const query = {
+          text: 'INSERT INTO Item(Name, InsertDate) VALUES($1, $2);',
+          values: [name, insertDate],
+        };
+        client.query(query, () => {
+          onInsert();
+          client.end();
+        });
       });
-    });
-    return;
-  },
-  getItems: (onGet) => {
-    const client = getClient();
-    client.connect(() => {
-      const query = {
-        text: 'SELECT ID, Name, InsertDate FROM Item ORDER BY InsertDate DESC LIMIT 10;',
-        rowMode: 'array',
-      };
-      client.query(query, (err, res) => {
-        onGet(res.rows.map((row) => {
-          return {
-            id: row[0],
-            name: row[1],
-            insertdate: row[2],
-          };
-        }));
-        client.end();
+      return;
+    },
+    getItems: (onGet) => {
+      const client = getClient();
+      client.connect(() => {
+        const query = {
+          text: 'SELECT ID, Name, InsertDate FROM Item ORDER BY InsertDate DESC LIMIT 10;',
+          rowMode: 'array',
+        };
+        client.query(query, (err, res) => {
+          onGet(res.rows.map((row) => {
+            return {
+              id: row[0],
+              name: row[1],
+              insertdate: row[2],
+            };
+          }));
+          client.end();
+        });
       });
-    });
-    return;
-  },
+      return;
+    },
+  };
 };
 
 
