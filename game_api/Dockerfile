@@ -19,7 +19,7 @@ RUN npm install
 #into the image just like before
 COPY database.js database.js
 
-COPY app.js app.js
+COPY server.js server.js 
 
 #When a container is initialized from this image, it will execute 
 #this line when ready (run app.js).
