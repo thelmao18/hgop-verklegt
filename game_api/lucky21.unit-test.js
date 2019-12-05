@@ -1,7 +1,9 @@
+let context = require("./context.js").newContext();
+
 test('1. a new game should have 50 cards left in the deck', () => {
   // Arrange
   let lucky21Constructor = require('./lucky21.js');
-  let game = lucky21Constructor();
+  let game = lucky21Constructor(context);
 
 
   // Assert

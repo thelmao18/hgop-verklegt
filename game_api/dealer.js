@@ -1,6 +1,6 @@
 module.exports = (context) => {
-  const randomConstructor = context('random');
-  const random = randomConstructor(context);
+  let randomConstructor = context('random');
+  let random = randomConstructor(context);
 
   return {
     shuffle: (deck) => {
