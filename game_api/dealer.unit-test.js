@@ -1,6 +1,6 @@
 const context = require('./context.js').newContext();
 const dealerConstructor = require('./dealer.js');
-const deckConstructor = require("./deck.js");
+const deckConstructor = require('./deck.js');
 
 function newRandom(randomReturnValues) {
   let i = 0;
@@ -30,7 +30,7 @@ test('dealer should shuffle cards', () => {
 });
 
 test('shuffle should return a deck of equal length to the original deck', () => {
-  //Arrange
+  // Arrange
   const dealer = dealerConstructor(context);
   const deck = ['a', 'b', 'c', 'd', 'e', 'f'];
 
@@ -42,45 +42,41 @@ test('shuffle should return a deck of equal length to the original deck', () => 
 });
 
 test('shuffle should include all cards originally in the deck', () => {
-  //Arrange
+  // Arrange
   const dealer = dealerConstructor(context);
-  let deck = ['a', 'b', 'c', 'd', 'e', 'f'];
-  const deck_copy = ['a', 'b', 'c', 'd', 'e', 'f'];
+  const deck = ['a', 'b', 'c', 'd', 'e', 'f'];
+  const deckCopy = ['a', 'b', 'c', 'd', 'e', 'f'];
 
   // Act
   dealer.shuffle(deck);
 
-  //Assert
-  expect(deck).toEqual(expect.arrayContaining(deck_copy));
-
+  // Assert
+  expect(deck).toEqual(expect.arrayContaining(deckCopy));
 });
 
 test('draw should remove a card from deck', () => {
-  //Arrange
+  // Arrange
   const dealer = dealerConstructor(context);
-  let deck = deckConstructor(context);
+  const deck = deckConstructor(context);
 
-  //Act
+  // Act
 
-  let my_card = dealer.draw(deck);
+  const myCard = dealer.draw(deck);
 
-  //Assert
-  expect(deck).toEqual(expect.not.arrayContaining([my_card]));
-
+  // Assert
+  expect(deck).toEqual(expect.not.arrayContaining([myCard]));
 });
 
 test('draw should always reduce deck length by one', () => {
-  //Arrange
+  // Arrange
   const dealer = dealerConstructor(context);
-  let deck = deckConstructor(context);
+  const deck = deckConstructor(context);
 
-  //Act
-  let old_length = deck.length;
-  let my_card = dealer.draw(deck);
-  let new_length = deck.length;
+  // Act
+  const oldLength = deck.length;
+  dealer.draw(deck);
+  const newLength = deck.length;
 
-  //Assert
-  expect(new_length).toEqual(old_length-1);
-
-
+  // Assert
+  expect(newLength).toEqual(oldLength-1);
 });
