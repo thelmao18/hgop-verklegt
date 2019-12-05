@@ -2,14 +2,14 @@ const context = require('./context.js').newContext();
 const randomConstructor = require('./random.js');
 
 test('random should return a number', () => {
-    // Arrange
-    const game = randomConstructor(context);
+  // Arrange
+  const game = randomConstructor(context);
 
-    // Act
-    let randomNumber = game.randomInt(game);
+  // Act
+  const randomNumber = game.randomInt(game);
 
-    // Assert
-    expect(typeof randomNumber).toEqual('number');
+  // Assert
+  expect(typeof randomNumber).toEqual('number');
 });
 
 test('random should return a random number between 5 & 10', () => {
@@ -17,10 +17,10 @@ test('random should return a random number between 5 & 10', () => {
   const game = randomConstructor(context);
 
   // Act
-  let randomNumber = game.randomInt(5, 10);
+  const randomNumber = game.randomInt(5, 10);
 
   // Assert
-  expect(randomNumber).toBeGreaterThanOrEqual(5)
+  expect(randomNumber).toBeGreaterThanOrEqual(5);
   expect(randomNumber).toBeLessThanOrEqual(10);
 });
 
@@ -29,7 +29,7 @@ test('random should return a number less than 5', () => {
   const game = randomConstructor(context);
 
   // Act
-  let randomNumber = game.randomInt(0, 5);
+  const randomNumber = game.randomInt(0, 5);
 
   // Assert
   expect(randomNumber).toBeLessThan(5);
