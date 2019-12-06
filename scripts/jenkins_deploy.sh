@@ -26,10 +26,7 @@ ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform o
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "chmod +x docker_compose_up.sh"
 ssh -o StrictHostKeyChecking=no -i "~/.aws/GameKeyPair.pem" ubuntu@$(terraform output public_ip) "./docker_compose_up.sh $GIT_COMMIT"
 
-
-
 sleep 20s
 curl ubuntu@$(terraform output public_ip):3000/status || exit 1
-
 
 exit 0
