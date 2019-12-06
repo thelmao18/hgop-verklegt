@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:unit": "jest --testRegex .unit-test.js$ --collectCoverage true",
-    "eslint": "eslint *.js"
+    "test:unit": "node ./node_modules/jest/bin/jest.js --testRegex .unit-test.js$ --collectCoverage true",
+    "eslint": "node ./node_modules/eslint/bin/eslint.js *.js"
   },
   "author": "Robert og Thelma",
   "license": "ISC",
