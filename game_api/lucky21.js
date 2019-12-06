@@ -73,10 +73,9 @@ module.exports = (context) => {
     },
     // The cards value + the card value if it exits (integer).
     getTotal: (game) => {
-       if (typeof game.getCardValue(game) === 'undefined')
-       {
-          return game.getCardsValue(game);
-       }
+      if (typeof game.getCardValue(game) === 'undefined') {
+        return game.getCardsValue(game);
+      }
 
 
       let score = game.getCardsValue(game);
