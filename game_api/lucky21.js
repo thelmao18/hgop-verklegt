@@ -73,13 +73,10 @@ module.exports = (context) => {
     },
     // The cards value + the card value if it exits (integer).
     getTotal: (game) => {
-      // Following code block commented out when we realised getTotal is never called except after
-      // calling "guessOver21", after which the card value will be defined.
-
-      // if (typeof game.getCardValue(game) === 'undefined')
-      // {
-      //    return game.getCardsValue(game);
-      // }
+       if (typeof game.getCardValue(game) === 'undefined')
+       {
+          return game.getCardsValue(game);
+       }
 
 
       let score = game.getCardsValue(game);
