@@ -13,7 +13,8 @@ COPY package.json package.json
 
 #RUN sends the parameter to the default shell, so "npm install" 
 #is called before the image is ready
-RUN npm install
+RUN npm install --production
+#TODO
 
 #The next two lines copy database.js and app.js from our source folder 
 #into the image just like before
