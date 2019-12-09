@@ -84,7 +84,7 @@ node {
 
     stage("Deploy")
     {
-        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT}"
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} production"
     }
     
 }
