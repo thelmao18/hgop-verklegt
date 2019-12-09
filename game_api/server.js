@@ -24,9 +24,9 @@ module.exports = function(context) {
           // previous database call, instead of just placing them next to each other.
           // E.g.
           //
-          //database.call1(...);
-          //database.call2(...);
-          //database.call3(...);
+          // database.call1(...);
+          // database.call2(...);
+          // database.call3(...);
           /*
           We put each consecutive call inside the onSuccess callback of the previous
           database call to allow the code to continue without having to wait for each
