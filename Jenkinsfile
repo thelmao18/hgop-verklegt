@@ -52,11 +52,33 @@ node {
         sh "./scripts/docker_push.sh ${git.GIT_COMMIT}"
     }
 
+    stage("API Test")
+    {
+        sh "chmod +x scripts/jenkins_deploy.sh"
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
+        dir("./game_api")
+        {
+            sh("API_URL=\$(Terraform output public_ip):3000 npm run test:api")
+        }
+        sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
+        
+    }
+
+    stage("Capacity Test")
+    {
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
+        dir("./game_api")
+        {
+            sh("API_URL=\$(Terraform output public_ip):3000 npm run test:capacity")
+        }
+        sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
+    }
+
+
 
     stage("Deploy")
     {
-        sh "ls"
-        sh "chmod +x scripts/jenkins_deploy.sh && ./scripts/jenkins_deploy.sh ${git.GIT_COMMIT}"
+        sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT}"
     }
     
 }
