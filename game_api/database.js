@@ -63,18 +63,74 @@ module.exports = function(context) {
     },
     // Should call onSuccess with integer.
     getTotalNumberOfGames: (onSuccess, onError) => {
-      onSuccess(0);
-      // TODO week 3
+      const client = getClient();
+      client.connect((err) => {
+        if (err) {
+          onError(err);
+          client.end();
+        } else {
+          const query = {
+            text: 'SELECT COUNT(*) FROM GameResult;'
+          };
+          client.query(query, (err) => {
+            if (err) {
+              onError(err);
+            } else {
+              let count = client.query(query);
+              onSuccess();
+            }
+            client.end();
+          });
+        }
+      });
+      return count;
     },
     // Should call onSuccess with integer.
     getTotalNumberOfWins: (onSuccess, onError) => {
-      onSuccess(0);
-      // TODO week 3
+      const client = getClient();
+      client.connect((err) => {
+        if (err) {
+          onError(err);
+          client.end();
+        } else {
+          const query = {
+            text: 'SELECT COUNT(SELECT Won FROM GameResult WHERE Won=true) FROM GameResult;'
+          };
+          client.query(query, (err) => {
+            if (err) {
+              onError(err);
+            } else {
+              let count = client.query(query);
+              onSuccess();
+            }
+            client.end();
+          });
+        }
+      });
+      return count;
     },
     // Should call onSuccess with integer.
     getTotalNumberOf21: (onSuccess, onError) => {
-      onSuccess(0);
-      // TODO week 3
+      const client = getClient();
+      client.connect((err) => {
+        if (err) {
+          onError(err);
+          client.end();
+        } else {
+          const query = {
+            text: 'SELECT COUNT(SELECT Total FROM GameResult WHERE Total=21) FROM GameResult;'
+          };
+          client.query(query, (err) => {
+            if (err) {
+              onError(err);
+            } else {
+              onSuccess();
+            }
+            client.end();
+          });
+        }
+      });
+      return count;
     },
   };
 };
