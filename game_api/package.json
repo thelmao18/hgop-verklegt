@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:unit": "node ./node_modules/jest/bin/jest.js --testRegex .unit-test.js$ --collectCoverage true",
+    "test:api": "node ./node_modules/jest/bin/jest.js --testRegex .api-test.js$ --collectCoverage true",
     "eslint": "node ./node_modules/eslint/bin/eslint.js *.js"
   },
   "author": "Robert og Thelma",
@@ -20,6 +21,7 @@
     "eslint-plugin-react": "^7.17.0",
     "express": "^4.17.1",
     "jest": "^24.9.0",
-    "pg": "^7.12.1"
+    "pg": "^7.12.1",
+    "request": "^2.88.0"
   }
 }

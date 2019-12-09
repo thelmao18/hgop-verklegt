@@ -76,7 +76,7 @@ module.exports = function(context) {
             if (err) {
               onError(err);
             } else {
-              onSuccess();
+              onSuccess(0);
             }
             client.end();
           });
@@ -99,7 +99,7 @@ module.exports = function(context) {
             if (err) {
               onError(err);
             } else {
-              onSuccess();
+              onSuccess(0);
             }
             client.end();
           });
@@ -122,7 +122,7 @@ module.exports = function(context) {
             if (err) {
               onError(err);
             } else {
-              onSuccess();
+              onSuccess(0);
             }
             client.end();
           });
