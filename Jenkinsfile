@@ -58,7 +58,7 @@ node {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
         dir("./game_api")
         {
-            sh("API_URL=$(Terraform output public_ip):3000 npm run test:api")
+            sh("API_URL=\$(Terraform output public_ip):3000 npm run test:api")
         }
         sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
         
@@ -69,7 +69,7 @@ node {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
         dir("./game_api")
         {
-            sh("API_URL=$(Terraform output public_ip):3000 npm run test:capacity")
+            sh("API_URL=\$(Terraform output public_ip):3000 npm run test:capacity")
         }
         sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
     }
