@@ -5,4 +5,4 @@ API_URL=http://$(terraform output public_ip):3000
 echo $API_URL
 cd -
 echo $API_URL
-npm run test:api
+API_URL=$API_URL npm run test:api
