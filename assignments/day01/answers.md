@@ -1,4 +1,4 @@
-# Answers to questions.
+# Answers to questions
 
 ## 1. What is Linux?
 
@@ -11,23 +11,20 @@ which is an operating system.
 Bash is the shell for the GNU operating system and allows us to directly
 execute commands via a text-based interface.
 
-
 ## 3. What is a package manager?
 
 A package manager is kind of like an app-store for linux, allowing you
 to download and install programs from a centralized repository. Sometimes
 command-line based.
 
-
 ## 4. What is git?
 
 Git is  a version-control software allowing us to monitor and roll back
 changes to software. Very helpful when working in teams.
 
-
 ## 5. What is npm?
 
-Node package manager or npm is a software package manager and installer for the Node Javascript platform. It puts modules in place so that node can find them, and manages dependency conflicts intelligently. Most commonly, it is used to publish, discover, install, and develop node programs. 
+Node package manager or npm is a software package manager and installer for the Node Javascript platform. It puts modules in place so that node can find them, and manages dependency conflicts intelligently. Most commonly, it is used to publish, discover, install, and develop node programs.
 
 ## 6. What is NodeJS?
 

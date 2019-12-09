@@ -1,6 +1,6 @@
-# Answers to questions.
+# Answers to questions
 
-## Explain why we put each consecutive call inside the onSuccess callback of the previous database call, instead of just placing them next to each other.
+## Explain why we put each consecutive call inside the onSuccess callback of the previous database call, instead of just placing them next to each other
 
 We put each consecutive call inside the onSuccess callback of the previous
 database call to allow the code to continue without having to wait for each
