@@ -1,3 +1,8 @@
+variable "environment" {
+  type = string
+}
+
+
 #This block specifies the cloud provider and location to host on
 #and locates the credentials needed to use the AWSclient to access
 #and control my AWS account
@@ -9,7 +14,7 @@ provider "aws" {
 #This block defines how Terraform will configure the AWS server's security
 #rules, allowing it to ssh into the server using predefined ports.
 resource "aws_security_group" "game_security_group" {
-  name = "GameSecurityGroup"
+  name   = "GameSecurityGroup_${var.environment}"
 
   ingress {
     from_port   = 22
@@ -42,7 +47,7 @@ resource "aws_instance" "game_server" {
   key_name               = "GameKeyPair"
   vpc_security_group_ids = [aws_security_group.game_security_group.id]
   tags = {
-    Name = "GameServer"
+    Name = "GameServer_${var.environment}"
   }
 
   # This block finds a script file on my computer using a relative path and 
