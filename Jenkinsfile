@@ -64,7 +64,7 @@ node {
         }
         */
         dir("./game_api"){
-            sh("API_URL=$(cd /var/lib/jenkins/terraform/hgop/apitest; echo http://\$(terraform output public_ip):3000)")
+            sh("API_URL=\$(cd /var/lib/jenkins/terraform/hgop/apitest; echo http://\$(terraform output public_ip):3000)")
             sh("npm run test:api")
         }
         sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
@@ -74,12 +74,15 @@ node {
     stage("Capacity Test")
     {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
+        /*
         dir("/var/lib/jenkins/terraform/hgop/capacitytest")
         {
             sh("echo \$(terraform output public_ip)")
             sh("API_URL=http://\$(terraform output public_ip):3000")
         }
+        */
         dir("./game_api"){
+            sh("API_URL=\$(cd /var/lib/jenkins/terraform/hgop/capacitytest; echo http://\$(terraform output public_ip):3000)")
             sh("npm run test:capacity")
         }
         sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
