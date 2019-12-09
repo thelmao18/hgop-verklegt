@@ -70,20 +70,19 @@ module.exports = function(context) {
           client.end();
         } else {
           const query = {
-            text: 'SELECT COUNT(*) FROM GameResult;'
+            text: 'SELECT COUNT(*) FROM GameResult;',
           };
           client.query(query, (err) => {
             if (err) {
               onError(err);
             } else {
-              let count = client.query(query);
               onSuccess();
             }
             client.end();
           });
         }
       });
-      return count;
+      return;
     },
     // Should call onSuccess with integer.
     getTotalNumberOfWins: (onSuccess, onError) => {
@@ -94,20 +93,19 @@ module.exports = function(context) {
           client.end();
         } else {
           const query = {
-            text: 'SELECT COUNT(SELECT Won FROM GameResult WHERE Won=true) FROM GameResult;'
+            text: 'SELECT COUNT(SELECT Won FROM GameResult WHERE Won=true) FROM GameResult;',
           };
           client.query(query, (err) => {
             if (err) {
               onError(err);
             } else {
-              let count = client.query(query);
               onSuccess();
             }
             client.end();
           });
         }
       });
-      return count;
+      return;
     },
     // Should call onSuccess with integer.
     getTotalNumberOf21: (onSuccess, onError) => {
@@ -118,7 +116,7 @@ module.exports = function(context) {
           client.end();
         } else {
           const query = {
-            text: 'SELECT COUNT(SELECT Total FROM GameResult WHERE Total=21) FROM GameResult;'
+            text: 'SELECT COUNT(SELECT Total FROM GameResult WHERE Total=21) FROM GameResult;',
           };
           client.query(query, (err) => {
             if (err) {
@@ -130,7 +128,7 @@ module.exports = function(context) {
           });
         }
       });
-      return count;
+      return;
     },
   };
 };
