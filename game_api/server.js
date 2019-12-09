@@ -20,13 +20,13 @@ module.exports = function(context) {
     database.getTotalNumberOfGames((totalNumberOfGames) => {
       database.getTotalNumberOfWins((totalNumberOfWins) => {
         database.getTotalNumberOf21((totalNumberOf21) => {
-          // Week 3
           // TODO Explain why we put each consecutive call inside the onSuccess callback of the
           // previous database call, instead of just placing them next to each other.
           // E.g.
-          database.getTotalNumberOfGames(...);
-          database.getTotalNumberOfWins(...);
-          database.getTotalNumberOf21(...);
+
+          database.call1('This is callback 1');
+          database.call2('This is callback 2');
+          database.call3('This is callback 3');
           res.statusCode = 200;
           res.send({
             totalNumberOfGames: totalNumberOfGames,
