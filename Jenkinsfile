@@ -59,11 +59,10 @@ node {
         dir("/var/lib/jenkins/terraform/hgop/apitest")
         {
             sh("echo \$(terraform output public_ip)")
-            sh("API_URL_PRELIM=http://\$(terraform output public_ip)")
-            sh("PORT=:3000")
+            sh("API_URL=http://\$(terraform output public_ip):3000")
         }
         dir("./game_api"){
-            sh("API_URL=\$API_URL\$PORT npm run test:api")
+            sh("npm run test:api")
         }
         sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
         
@@ -75,11 +74,10 @@ node {
         dir("/var/lib/jenkins/terraform/hgop/capacitytest")
         {
             sh("echo \$(terraform output public_ip)")
-            sh("API_URL_PRELIM=http://\$(terraform output public_ip)")
-            sh("PORT=:3000")
+            sh("API_URL=http://\$(terraform output public_ip):3000")
         }
         dir("./game_api"){
-            sh("API_URL=\$API_URL\$PORT npm run test:capacity")
+            sh("npm run test:capacity")
         }
         sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
     }
