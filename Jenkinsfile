@@ -57,8 +57,8 @@ node {
         sh "chmod +x scripts/jenkins_deploy.sh"
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} apitest"
         dir("./game_api"){
-            sh("chmod +x scripts/api_test.sh")
-            sh("./scripts/api_test.sh")
+            sh("chmod +x ../scripts/api_test.sh")
+            sh("./../scripts/api_test.sh")
         }
         sh "terraform destroy -auto-approve -var environment=apitest || exit 1"
         
@@ -68,8 +68,8 @@ node {
     {
         sh "./scripts/jenkins_deploy.sh ${git.GIT_COMMIT} capacitytest"
         dir("./game_api"){
-            sh("chmod +x scripts/cap_test.sh")
-            sh("./scripts/cap_test.sh")
+            sh("chmod +x ../scripts/cap_test.sh")
+            sh("./../scripts/cap_test.sh")
         }
         sh "terraform destroy -auto-approve -var environment=capacitytest || exit 1"
     }
