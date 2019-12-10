@@ -1,8 +1,8 @@
 /node_modules
 /dist
 /.cache
-/yarn.lock
-/README.md
+/README.md 
+/package.json
 /cards
 /src/components
 /src/App.css
