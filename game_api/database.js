@@ -1,5 +1,5 @@
 module.exports = function(context) {
-  //const Client = context('pgClient');
+  const Client = context('pgClient');
   const configConstructor = context('config');
   const config = configConstructor(context);
 
