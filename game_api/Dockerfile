@@ -40,7 +40,8 @@ COPY config.js config.js
 COPY migrations/20191210120722-GameResultTable.js migrations/20191210120722-GameResultTable.js
 
 COPY database.json database.json
-#COPY 20191210122627-GameResultTableAddInsertDate.js 20191210122627-GameResultTableAddInsertDate.js
+
+COPY migrations/20191210134907-GameResultTableAddInsertDate.js migrations/20191210134907-GameResultTableAddInsertDate.js
 
 # Give postgres time to setup before we try to migrate.
 CMD sleep 5 && npm run migratedb:pg && node app.js
