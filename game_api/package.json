@@ -13,6 +13,7 @@
   "author": "Robert og Thelma",
   "license": "ISC",
   "dependencies": {
+    "db-migrate": "^0.11.6",
     "express": "4.17.1",
     "pg": "7.12.1"
   },
