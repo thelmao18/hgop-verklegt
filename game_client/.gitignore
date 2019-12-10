@@ -1,0 +1,10 @@
+/node_modules
+/dist
+/.cache
+/yarn.lock
+/README.md
+/cards
+/src/components
+/src/App.css
+/src/index.css
+/src/index.html
