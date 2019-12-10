@@ -70,14 +70,14 @@ module.exports = function(context) {
           onError(err);
           client.end();
         } else {
-          const query = {
-            text: 'SELECT COUNT(*) FROM "GameResult";',
+          const totalNumberOfGames = {
+            text: 'SELECT "Won" FROM "GameResult";',
           };
-          client.query(query, (err) => {
+          client.query(totalNumberOfGames, (err, res) => {
             if (err) {
               onError(err);
             } else {
-              onSuccess(0);
+              onSuccess(res.rowCount);
             }
             client.end();
           });
@@ -93,14 +93,14 @@ module.exports = function(context) {
           onError(err);
           client.end();
         } else {
-          const query = {
-            text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Won"=true;',
+          const totalNumberOfWins = {
+            text: 'SELECT "Won" FROM "GameResult" WHERE "Won"=true;',
           };
-          client.query(query, (err) => {
+          client.query(totalNumberOfWins, (err, res) => {
             if (err) {
               onError(err);
             } else {
-              onSuccess(0);
+              onSuccess(res.rowCount);
             }
             client.end();
           });
@@ -116,14 +116,14 @@ module.exports = function(context) {
           onError(err);
           client.end();
         } else {
-          const query = {
-            text: 'SELECT COUNT(*) FROM "GameResult" WHERE "Total"=21;',
+          const totalNumberOf21 = {
+            text: 'SELECT "Total" FROM "GameResult" WHERE "Total"=21;',
           };
-          client.query(query, (err) => {
+          client.query(totalNumberOf21, (err, res) => {
             if (err) {
               onError(err);
             } else {
-              onSuccess(0);
+              onSuccess(res.rowCount);
             }
             client.end();
           });
