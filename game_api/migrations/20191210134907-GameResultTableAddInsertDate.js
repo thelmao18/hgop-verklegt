@@ -15,7 +15,7 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.addColumn("GameResult", "InsertDate", {InsertDate: { type: "TIMESTAMP", notNull: true}})
+  return db.addColumn("GameResult", "InsertDate", { type: "timestamp", notNull: true})
 };
 
 exports.down = function(db) {
@@ -23,5 +23,5 @@ exports.down = function(db) {
 };
 
 exports._meta = {
-  "version": 1
+  "version": 1.1
 };
