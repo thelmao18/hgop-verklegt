@@ -17,7 +17,7 @@ module.exports = function(context) {
     });
   }
 
-  /*setTimeout(() => {
+  /* setTimeout(() => {
     const client = getClient();
     client.connect((err) => {
       if (err) {
