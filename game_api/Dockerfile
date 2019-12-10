@@ -37,7 +37,7 @@ COPY random.js random.js
 
 COPY config.js config.js
 
-COPY migrations/20191210120722-GameResultTable.js migrations/20191210120722-GameResultTable.js
+COPY migrations/20191210122005-GameResultTable.js migrations/20191210122005-GameResultTable.js
 
 COPY database.json database.json
 
