@@ -15,10 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "db-migrate": "^0.11.6",
-<<<<<<< HEAD
-=======
     "db-migrate-pg": "^1.0.0",
->>>>>>> a3b135abf7d0f88f2e3343673c03fe6630f52a0b
     "express": "4.17.1",
     "pg": "7.12.1"
   },
