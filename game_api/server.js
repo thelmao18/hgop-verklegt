@@ -111,6 +111,11 @@ module.exports = function(context) {
     }
   });
 
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+  });
+
   // Player makes a guess that the next card will be over 21.
   app.post('/guessOver21', (req, res) => {
     if (game) {
