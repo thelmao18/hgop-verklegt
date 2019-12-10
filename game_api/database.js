@@ -1,5 +1,5 @@
 module.exports = function(context) {
-  const Client = context('pgClient');
+  //const Client = context('pgClient');
   const configConstructor = context('config');
   const config = configConstructor(context);
 
@@ -8,14 +8,14 @@ module.exports = function(context) {
    * This function gets the client
    * @return {Client}
    */
-  function getClient() {
-    return new Client({
-      host: config.pgHost,
-      user: config.pgUser,
-      password: config.pgPassword,
-      database: config.pgDatabase,
-    });
-  }
+  //function getClient() {
+  //  return new Client({
+  //    host: config.pgHost,
+  //    user: config.pgUser,
+  //    password: config.pgPassword,
+  //    database: config.pgDatabase,
+  //  });
+  //}
 
   return {
     insertResult: (won, score, total, onSuccess, onError) => {
