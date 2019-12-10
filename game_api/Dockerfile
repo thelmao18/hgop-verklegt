@@ -36,6 +36,10 @@ COPY inject.js inject.js
 COPY random.js random.js
 
 COPY config.js config.js
-#When a container is initialized from this image, it will execute 
-#this line when ready (run app.js).
-CMD node app.js
+
+COPY 20191210120722-GameResultTable.js 20191210120722-GameResultTable.js
+
+COPY 20191210122627-GameResultTableAddInsertDate.js 20191210122627-GameResultTableAddInsertDate.js
+
+# Give postgres time to setup before we try to migrate.
+CMD sleep 5 && npm run migratedb:pg && node app.js
