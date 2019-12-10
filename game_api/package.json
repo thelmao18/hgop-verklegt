@@ -9,7 +9,7 @@
     "test:api": "node ./node_modules/jest/bin/jest.js --testRegex .api-test.js$ --collectCoverage true",
     "test:capacity": "node ./node_modules/jest/bin/jest.js --testRegex .capacity-test.js$ --collectCoverage true",
     "eslint": "node ./node_modules/eslint/bin/eslint.js *.js",
-    "migratedb:pg": "db-migrate --verbose --env pg --config ./database.json --migrations-dir ./migrations up",
+    "migratedb:pg": "db-migrate --verbose --env pg --config ./database.json --migrations-dir ./migrations up"
   },
   "author": "Robert og Thelma",
   "license": "ISC",
