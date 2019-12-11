@@ -4,14 +4,21 @@ const apiUrl = "localhost:3000";
 
 export const startGame = () => {
   // TODO: Call start game
-  return axios.post("localhost:3000/start").then(res => {
+  return axios({
+    method: "post",
+    url: "localhost:3000/start",
+    data: {},
+  }).then(res => {
     return getState();
   });
 };
 
 export const getState = () => {
   // TODO: Get the state of the game
-  return axios.get("localhost:3000/state");
+  return axios({
+    method: "get",
+    url: "localhost:3000/state",
+  });
 };
 
 export const guessOver21 = () => {

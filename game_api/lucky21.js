@@ -20,8 +20,8 @@ module.exports = (context) => {
     // The card that the player thinks will exceed 21.
     card: undefined,
   };
-  let firstCard = card0.slice(0, 2);
-  let secondCard = card1.slice(0, 2);
+  const firstCard = card0.slice(0, 2);
+  const secondCard = card1.slice(0, 2);
   let card0Score = parseInt(firstCard);
   let card1Score = parseInt(secondCard);
   if (14 > card0Score && card0Score > 10) {
@@ -30,10 +30,8 @@ module.exports = (context) => {
   if (14 > card1Score && card1Score > 10) {
     card1Score = 10;
   }
-  if (card1Score == 1 || card0Score == 1)
-  {
-    if (card1Score == 10 || card0Score == 10)
-    {
+  if (card1Score == 1 || card0Score == 1){
+    if (card1Score == 10 || card0Score == 10){
       state.over=true;
       state.won=true;
     }
