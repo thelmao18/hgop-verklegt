@@ -1,34 +1,27 @@
 import axios from "axios";
 // TODO: Add correct api Url
-const apiUrl = "localhost:3000";
+const apiUrl = "";
 
 export const startGame = () => {
   // TODO: Call start game
-  return axios({
-    method: "post",
-    url: "localhost:3000/start",
-    data: {},
-  }).then(res => {
+  return axios.post(`${apiUrl}`).then(res => {
     return getState();
   });
 };
 
 export const getState = () => {
   // TODO: Get the state of the game
-  return axios({
-    method: "get",
-    url: "localhost:3000/state",
-  });
+  return axios.get(`${apiUrl}`);
 };
 
 export const guessOver21 = () => {
   // TODO: Guess over 21
-  return axios.post("localhost:3000/guessOver21");
+  return axios.post(`${apiUrl}`);
 };
 
 export const guess21OrUnder = () => {
   // TODO: Guess 21 or under
-  return axios.post("localhost:3000/guess21OrUnder");
+  return axios.post(`${apiUrl}`);
 };
 
 // Helper function to convert cards format
