@@ -7,7 +7,7 @@ module.exports = function(context) {
   const lucky21Constructor = context('lucky21');
   const HotShotsConstructor = require('hot-shots');
   const hotShots = new HotShotsConstructor({
-    host: "my_datadog_container",
+    host: 'my_datadog_container',
     globalTags: process.env.ENVIRONMENT,
   });
 
