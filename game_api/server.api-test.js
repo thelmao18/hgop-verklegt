@@ -2,7 +2,7 @@ const helper = require('./server.lib-test.js');
 
 const timeout = 30000;
 
-//What does the done parameter do?
+// What does the done parameter do?
 /*
 The done parameter is a non-official standard name for a function, a.k.a callback,
 that informs the calling function that a task is completed.
