@@ -6,8 +6,7 @@ export const startGame = () => {
   // TODO: Call start game
   return axios.post(`${apiUrl}` + "/start").then(res => {
     return getState();
-  })
-  .catch( (error) => console.log(error));
+  });
 };
 
 export const getState = () => {
