@@ -30,8 +30,8 @@ module.exports = (context) => {
   if (14 > card1Score && card1Score > 10) {
     card1Score = 10;
   }
-  if (card1Score == 1 || card0Score == 1){
-    if (card1Score == 10 || card0Score == 10){
+  if (card1Score == 1 || card0Score == 1) {
+    if (card1Score == 10 || card0Score == 10) {
       state.over=true;
       state.won=true;
     }
