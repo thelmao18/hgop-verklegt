@@ -11,12 +11,16 @@ services:
       POSTGRES_USER: 'my_postgres_user'
       POSTGRES_PASSWORD: 'my_postgres_password'
       PORT: '3000'
+      ENVIRONMENT: ${CURRENT_ENV}
+      DD_ENTITY_ID: ${CURRENT_ENV}
+      DD_AGENT_HOST: "my_datadog_container"
   my_postgres_container:
     image: postgres
     environment:
       POSTGRES_DB: 'my_postgres_database'
       POSTGRES_USER: 'my_postgres_user'
       POSTGRES_PASSWORD: 'my_postgres_password'
+      ENVIRONMENT: ${CURRENT_ENV}
   my_game_client:
     image: villalobos98/game_client:${GIT_COMMIT}
     ports:
@@ -27,13 +31,15 @@ services:
       PORT: '4000'
       API_PORT: '3000'
       API_URL: ${API_URL}
-  #my_datadog_container:
-   # image: datadog/agent:latest
-    #environment:
-     # DD_API_KEY: 'f3679edb4144338cfda38d4ea317a6b0'
-      #DD_SITE: 'datadoghq.eu'
-   #   DD_DOGSTATSD_NON_LOCAL_TRAFFIC: 'true'
-   # volumes:
-   #   - /var/run/docker.sock:/var/run/docker.sock
-   #   - /proc/mounts:/host/proc/mounts:ro
-   #   - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
+      ENVIRONMENT: ${CURRENT_ENV}
+  my_datadog_container:
+    image: datadog/agent:latest
+    environment:
+      DD_API_KEY: 'f3679edb4144338cfda38d4ea317a6b0'
+      DD_SITE: 'datadoghq.eu'
+      DD_DOGSTATSD_NON_LOCAL_TRAFFIC: 'true'
+      DD_TAGS: ${CURRENT_ENV}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc/mounts:/host/proc/mounts:ro
+      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro

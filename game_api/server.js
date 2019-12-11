@@ -5,6 +5,8 @@ module.exports = function(context) {
   const configConstructor = context('config');
   const config = configConstructor(context);
   const lucky21Constructor = context('lucky21');
+  const HotShotsConstructor = require('hot-shots');
+  const hotShots = new HotShotsConstructor({});
 
   const app = express();
 
@@ -70,6 +72,7 @@ module.exports = function(context) {
     } else {
       game = lucky21Constructor(context);
       const msg = 'Game started';
+      hotShots.increment('games.started');
       res.statusCode = 201;
       res.send(msg);
     }
