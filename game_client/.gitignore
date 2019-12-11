@@ -1,10 +1,3 @@
 /node_modules
 /dist
 /.cache
-/README.md 
-/package.json
-/cards
-/src/components
-/src/App.css
-/src/index.css
-/src/index.html

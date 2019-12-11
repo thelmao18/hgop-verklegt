@@ -1,17 +1,17 @@
 import axios from "axios";
 // TODO: Add correct api Url
-const apiUrl = (process.env.API_URL || "localhost:3000");
+const apiUrl = "";
 
 export const startGame = () => {
   // TODO: Call start game
-  return axios.post(apiUrl+"/start").then(res => {
+  return axios.post(`${apiUrl}`).then(res => {
     return getState();
   });
 };
 
 export const getState = () => {
   // TODO: Get the state of the game
-  return axios.get(apiUrl+"/state");
+  return axios.get(`${apiUrl}`);
 };
 
 export const guessOver21 = () => {
