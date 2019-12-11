@@ -26,7 +26,7 @@ module.exports = function(context) {
       database.getTotalNumberOfWins((totalNumberOfWins) => {
         database.getTotalNumberOf21((totalNumberOf21) => {
           // Week 3
-          // TODO Explain why we put each consecutive call inside the onSuccess callback of the
+          // Explain why we put each consecutive call inside the onSuccess callback of the
           // previous database call, instead of just placing them next to each other.
           // E.g.
           // database.call1(...);

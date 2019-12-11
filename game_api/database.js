@@ -77,7 +77,7 @@ module.exports = function(context) {
             if (err) {
               onError(err);
             } else {
-              onSuccess(res);
+              onSuccess(parseInt(res.rows[0].count));
             }
             client.end();
           });
@@ -100,7 +100,7 @@ module.exports = function(context) {
             if (err) {
               onError(err);
             } else {
-              onSuccess(0);
+              onSuccess(parseInt(res.rows[0].count));
             }
             client.end();
           });
@@ -123,7 +123,7 @@ module.exports = function(context) {
             if (err) {
               onError(err);
             } else {
-              onSuccess(0);
+              onSuccess(parseInt(res.rows[0].count));
             }
             client.end();
           });
