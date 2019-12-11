@@ -27,3 +27,13 @@ services:
       PORT: 4000
       API_PORT: 3000
       API_URL: ${API_URL}
+  #my_datadog_container:
+   # image: datadog/agent:latest
+    #environment:
+     # DD_API_KEY: 'f3679edb4144338cfda38d4ea317a6b0'
+      #DD_SITE: 'datadoghq.eu'
+   #   DD_DOGSTATSD_NON_LOCAL_TRAFFIC: 'true'
+   # volumes:
+   #   - /var/run/docker.sock:/var/run/docker.sock
+   #   - /proc/mounts:/host/proc/mounts:ro
+   #   - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
