@@ -4,24 +4,24 @@ const apiUrl = "localhost:3000";
 
 export const startGame = () => {
   // TODO: Call start game
-  return axios.post(`${apiUrl}`, "/start").then(res => {
+  return axios.post("localhost:3000/start").then(res => {
     return getState();
   });
 };
 
 export const getState = () => {
   // TODO: Get the state of the game
-  return axios.get(`${apiUrl}`, "/state");
+  return axios.get("localhost:3000/state");
 };
 
 export const guessOver21 = () => {
   // TODO: Guess over 21
-  return axios.post(`${apiUrl}`, "/guessOver21");
+  return axios.post("localhost:3000/guessOver21");
 };
 
 export const guess21OrUnder = () => {
   // TODO: Guess 21 or under
-  return axios.post(`${apiUrl}`, "/guess21OrUnder");
+  return axios.post("localhost:3000/guess21OrUnder");
 };
 
 // Helper function to convert cards format

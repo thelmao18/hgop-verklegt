@@ -18,7 +18,7 @@ services:
       POSTGRES_USER: 'my_postgres_user'
       POSTGRES_PASSWORD: 'my_postgres_password'
   my_game_client:
-    image: villalobos98/hgop:client1
+    image: villalobos98/game_client:${GIT_COMMIT}
     ports:
       - '4000:4000'
     depends_on:
