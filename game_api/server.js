@@ -6,7 +6,10 @@ module.exports = function(context) {
   const config = configConstructor(context);
   const lucky21Constructor = context('lucky21');
   const HotShotsConstructor = require('hot-shots');
-  const hotShots = new HotShotsConstructor({});
+  const hotShots = new HotShotsConstructor({
+    host: "my_datadog_container",
+    globalTags: process.env.ENVIRONMENT,
+  });
 
   const app = express();
 
@@ -99,6 +102,7 @@ module.exports = function(context) {
         res.send(msg);
       } else {
         game.guess21OrUnder(game);
+        hotShots.increment('games.guessed21OrUnder');
         if (game.isGameOver(game)) {
           const won = game.playerWon(game);
           const score = game.getCardsValue(game);
@@ -128,6 +132,7 @@ module.exports = function(context) {
         res.send(msg);
       } else {
         game.guessOver21(game);
+        hotShots.increment('games.guessedOver21');
         if (game.isGameOver(game)) {
           const won = game.playerWon(game);
           const score = game.getCardsValue(game);
